@@ -1,0 +1,10 @@
+.DS_STORE
+*.log
+npm-debug.*
+node_modules
+dist
+reports
+.idea/
+.yarn-cache
+.vscode
+yarn.lock
