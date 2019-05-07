@@ -28,8 +28,8 @@ npm add babel-core babel-loader babel-preset-es2015 babel-preset-stage-0 babel-p
 ## react
 
 ```
-npm install react redux react-redux react-router-dom --save
-yarn add react redux react-redux react-router-dom
+npm install react redux react-redux react-router-dom react-dom --save
+yarn add react redux react-redux react-router-dom react-dom
 ```
 
 ## fetch 获取数据
@@ -63,6 +63,6 @@ yarn add express
 ```
 github上新建一个仓库，
 然后在项目上进行：git init 命令
-然后再输入：git remote add origin https://github.com/Jenear/reactredux.git，
+然后再输入：git remote add origin https://github.com/Jenear/reactredux.git
 此时就连上了git仓库，可以进行代码提交
 ```
