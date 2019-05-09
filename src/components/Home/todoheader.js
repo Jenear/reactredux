@@ -4,8 +4,8 @@ import React from 'react';
  * 2：store 会调用 todos reducer,返回新的状态对象  eg:[{id:1,title,complate:false}]
  */
 
-const Todoheader = () => {
-  return <input type="text" />;
+const Todoheader = (props) => {
+    return <input type = "text" onKeyDown = {props.addTodo} /> ;
 };
 
 export default Todoheader;
