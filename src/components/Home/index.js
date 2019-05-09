@@ -1,6 +1,13 @@
-import React from "react";
+import React from 'react';
+import Todoheader from './todoheader';
+import Todolist from './todolist';
 
 const Home = () => {
-  return <h1>Home</h1>;
+  return (
+    <div>
+      <Todoheader />
+      <Todolist />
+    </div>
+  );
 };
 export default Home;

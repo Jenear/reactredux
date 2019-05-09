@@ -35,7 +35,7 @@ function HomeBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit">
-            News
+            News Board
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
