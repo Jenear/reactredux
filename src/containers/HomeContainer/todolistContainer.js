@@ -1,17 +1,17 @@
 import Todolist from '../../components/Home/todolist';
 import { connect } from 'react-redux';
+import { deleteItem } from '../../actions/todo';
 const mapStateToProps = state => {
-    console.log('state3333333', state)
-    return {
-        // todos: state.todosReducer.toJS()
-        todos: state.getIn(['todosReducer','lists']),
-    }
-}
+  return {
+    todos: state.getIn(['todoList', 'lists'])
+  };
+};
 const mapDispatchToProps = dispatch => ({
-    //
+  //
+  delete: id => dispatch(deleteItem({ id }))
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Todolist);
