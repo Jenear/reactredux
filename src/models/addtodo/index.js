@@ -1,3 +1,7 @@
 import Immutable from 'immutable';
 
-export default Immutable.fromJS({lists:[]})
+export default Immutable.fromJS({
+    lists:[],
+    editing:'',
+    editValue:''
+})
