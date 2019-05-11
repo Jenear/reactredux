@@ -11,7 +11,6 @@ const App = () => {
       <div>
         <HomeBar />
         <MainRouter />
-      <div>aaa</div>
       </div>
     </Provider>
   );
