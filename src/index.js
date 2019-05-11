@@ -12,6 +12,7 @@ const App = () => {
         <HomeBar />
         <MainRouter />
       </div>
+      <div>aaa</div>
     </Provider>
   );
 };
