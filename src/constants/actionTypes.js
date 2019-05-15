@@ -4,3 +4,5 @@ export const ADDTODO = 'addTodo';
 export const CHANGEFILTER = 'changeFilter';
 //删除每一行的list item
 export const DELETEITEM = 'deleteItem';
+//删除store中所有的数据
+export const USERLOGOUT = 'userLogout';

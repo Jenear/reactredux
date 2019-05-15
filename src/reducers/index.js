@@ -4,4 +4,14 @@ import todoList from './todos';
 
 //把所有的reducer合并，去生成store
 // export default combineReducers({ filterReducer, todosReducer });
-export default combineReducers({ todoList });
+
+const appReducer = combineReducers({ todoList });
+const rootReducer = (state, action) => {
+  // debugger;
+  if (action.type === 'userLogout') {
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
+
+export default rootReducer;
