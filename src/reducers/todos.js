@@ -57,7 +57,8 @@ export default handleActions(
       state.setIn(['editValue'],payload.value)
     ),
     [UPDATEITEM]:(state,{payload})=>{
-      console.log('sdsdsdsdsdd',payload)
+      console.log('sdsdsdsdsdd',payload.e)
+      // debugger
       // const {e,id}=payload;
       if(payload.code===13){
         return state.updateIn(['lists'],x=>{

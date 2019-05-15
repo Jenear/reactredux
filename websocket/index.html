@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  
+</head>
+<body>
+    <input id="message" type="text">
+    <button onclick="sendMessage();">发送</button>
+    <button onclick="updateUI();">更新</button>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody class="tableTbody"> 
+            
+        </tbody>
+    </table>
+
+    <script>
+            var ws = new WebSocket("ws://localhost:9090");
+            ws.onopen = function (e) {
+                console.log('Connection to server opened',e);
+            }
+            const goodsData ={
+                data:[
+                    {name:'iphone4',price:2000},
+                    {name:'iphone5',price:2500},
+                    {name:'iphone6',price:3000},
+                    {name:'iphone7',price:3500},
+                    {name:'iphone8',price:4000},
+                ]
+            }
+            const tableData= goodsData.data;
+            function sendMessage() {
+                console.log('goodsData',goodsData)
+                ws.send(JSON.stringify(goodsData));
+                tableList(tableData)
+                // updateUI();
+            }
+            function updateUI(){
+                ws.onmessage=function(e){
+                    console.log('e',e)
+                    var stocksData = JSON.parse(e.data);
+                    console.log('data',stocksData)
+                    tableList(stocksData.data)
+    
+                }
+            }
+            function tableList(tableData){
+                let table =''
+                tableData.map(item=>{
+                        table+=`<tr><td>${item.name}</td><td>${item.price}</td></tr>`
+                    })
+    console.log('table',table)
+                $(".tableTbody").html(table)
+            }
+        </script>
+    
+</body>
+</html>
