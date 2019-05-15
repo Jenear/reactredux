@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
       e.target.value = '';
       if (inputValue) {
         dispatch(
-          addTodo({ id: Date.now(), value: inputValue, complate: false })
+          addTodo({ id: Date.now(), value: inputValue, completed: false })
         );
       }
     }
