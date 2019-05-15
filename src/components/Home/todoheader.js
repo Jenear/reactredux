@@ -5,7 +5,12 @@ import React from 'react';
  */
 
 const Todoheader = (props) => {
-    return <input type = "text" onKeyDown = {props.addTodo} /> ;
+  return (
+    <div>
+      <input type="text" onKeyDown={props.addTodo} /> ;
+      <button onClick={props.logouts}>清空store</button>
+    </div>
+  );
 };
 
 export default Todoheader;
