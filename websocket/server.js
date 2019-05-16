@@ -1,45 +1,58 @@
-const  WebSocketServer = require('ws').Server;
+const WebSocketServer = require('ws').Server;
 
-const wss = new WebSocketServer({ port: 9090 });
+const wss = new WebSocketServer({ port: 8800 });
 
-// wss.on('connection', function (ws) {
-//     console.log('client connected');
-//     ws.on('message', function (message) {
-//         console.log('message',message);
-//     });
-// });
-
-let stockRequest='';
-
-wss.on('connection', function (ws) {
-    console.log(1111)
-    const sendStockUpdates = function (ws) {
-        if (ws.readyState == 1) {
-            let newData=[]
-            const data = stockRequest.data;
-            console.log('data',data)
-            newData = data.map(item=>{
-                item.price +=1;
-                return item;
-            })
-        //    console.log('newData',newData,stockRequest)
-
-            const  socketObj={...stockRequest,data:newData};
-           console.log('socketObj',socketObj)
-         
-            if (socketObj.length !== 0) {
-                ws.send(JSON.stringify(socketObj));//需要将对象转成字符串。WebSocket只支持文本和二进制数据
-            }
-           
-        }
+wss.on('connection', function(ws) {
+  console.log('connection websocket');
+  // let requestData = '';
+  let initData = '';
+  let begin;
+  //接收客户端发送的报文事件
+  ws.on('message', function(message) {
+    console.log('接收到了用户发来的信息message', message);
+    const requestData = JSON.parse(message); //根据请求过来的数据来更新。
+    const { type, data } = requestData;
+    // console.log('data', data);
+    // console.log('bbbbbb', begin);
+    if (type === 'init') {
+      console.log('init');
+      initData = data;
+      sendData(data);
+      clearInterval(begin);
+    } else if (type === 'update') {
+      console.log('update');
+      begin = setInterval(function() {
+        console.log('initData', initData);
+        sendUpdateData(ws, initData);
+      }, 2000);
+    } else if (type === 'close') {
+      console.log('close');
+      clearInterval(begin);
     }
-    setInterval(function () {
-        sendStockUpdates(ws);
-    }, 2000);
-    ws.on('message', function (message) {
-        console.log("收到消息1message", message);
-         stockRequest = JSON.parse(message);//根据请求过来的数据来更新。
-        console.log("收到消息2", stockRequest);
-        sendStockUpdates(ws);
-    });
-})
+  });
+  ws.on('error', function(e) {
+    console.log('error  websocket');
+  });
+
+  // 注册连接关闭事件
+  ws.on('close', function(message) {
+    console.log('close  websocket');
+  });
+
+  const sendUpdateData = function(ws, requestData) {
+    // console.log('requestData', requestData);
+    let data = [];
+    if (ws.readyState == 1) {
+      data = requestData.map((item) => {
+        item.price += 1;
+        return item;
+      });
+      sendData(data);
+    }
+  };
+  function sendData(sendObj) {
+    if (sendObj.length !== 0) {
+      ws.send(JSON.stringify(sendObj)); //需要将对象转成字符串。WebSocket只支持文本和二进制数据
+    }
+  }
+});
