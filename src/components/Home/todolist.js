@@ -15,7 +15,7 @@ const Todotodos = ({
     <div>
         {todos.length?
              <div>
-                 <input type="checkbox" checked={!activeCount}  onChange={(e)=>checkedToggle(e.target.checked)} /> 
+                 <input type="checkbox" checked={!activeCount}   onChange={(e)=>checkedToggle(e.target.checked)} /> 
                 <span>{activeCount?'全部选中':'全部取消'}</span>
             </div>
         :null}
@@ -29,8 +29,10 @@ const Todotodos = ({
                     <input 
                         type="text" 
                         value={editValue} 
+                        autoFocus={true}
+                        onBlur={(e)=>updateValue(item.id,e.target.value,13)}
                         onChange={(e)=>changeValue(e.target.value)}
-                        onKeyDown={(e)=>updateValue(item.id,e.target.value,e.keyCode)}
+                        onKeyDown={(e)=>updateValue(item.id,e.target.value,e.keyCode,e)}
                      />
                     :<span 
                         style={{color:item.completed?'red':'green',paddingLeft:10,width:156,display:'inline-block',textDecoration:(item.completed?'line-through':'')}}

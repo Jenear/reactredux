@@ -24,9 +24,10 @@ const mapDispatchToProps = dispatch => ({
   //
   delItem: id => dispatch(deleteItem({ id })),
   toggle: id =>dispatch(toggleTodos({id})),
+  // checkedToggle:checked=>dispatch(checkedAll({checked})),
   checkedToggle:checked=>dispatch(checkedAll({checked})),
   doubleClickItem:(id,value)=>dispatch(doubleClick({id,value})),
-  updateValue:(id,value,code)=>dispatch(updateItem({id,value,code})),
+  updateValue:(id,value,code,e)=>dispatch(updateItem({id,value,code,e})),
   changeValue:(value)=>dispatch(changeValue({value}))
 });
 
