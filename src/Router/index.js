@@ -2,7 +2,7 @@ import React from 'react';
 import {
   HashRouter as Router, //外层容器
   Route, //一条一条的路由
-  Link
+  Link,
 } from 'react-router-dom';
 
 import Paper from '@material-ui/core/Paper';
@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import Root from '../components/Root';
 // import Home from '../components/Home';
 import Home from '../containers/HomeContainer';
-import User from '../components/User';
+import User from '../containers/userContainer/Uercontainer';
 import About from '../components/About';
 import LinkComp from './linkComp';
 import './style.less';

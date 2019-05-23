@@ -3,6 +3,7 @@
 npm-debug.*
 node_modules
 dist
+lib
 reports
 .idea/
 .yarn-cache
