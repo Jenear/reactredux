@@ -11,7 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import Root from '../components/Root';
 // import Home from '../components/Home';
 import Home from '../containers/HomeContainer';
-import User from '../containers/userContainer/Uercontainer';
+import ReduxIntlProvider from '../components/i18N/ReduxIntlProvider';
+import User from '../containers/userContainer/Usercontainer';
 import About from '../components/About';
 import LinkComp from './linkComp';
 import './style.less';
@@ -27,7 +28,10 @@ const MainRouter = () => {
           {/* path 如果为/，访问/home 的时候也会访问到Root组件，所以需要进行设置，exact ，只有/的时候才会访问Root */}
           <Route path="/" exact component={Root} />
           <Route path="/home" component={Home} />
-          <Route path="/user" component={User} />
+          <ReduxIntlProvider lang="EN">
+            {/* <ReduxIntlProvider lang={navigator.language}> */}
+            <Route path="/user" component={User} />
+          </ReduxIntlProvider>
           <Route path="/about" component={About} />
         </Grid>
       </Grid>
