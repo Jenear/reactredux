@@ -2,6 +2,7 @@ import React from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 import { FormattedMessage } from 'react-intl';
+import UserDetail from './UserDetail';
 // import actions from '../actions/index.js';
 
 // class App extends Component {
@@ -29,6 +30,7 @@ const User = (props) => {
           }}
         /> */}
       </h1>
+      <UserDetail />
     </div>
   );
 };

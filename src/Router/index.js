@@ -28,7 +28,7 @@ const MainRouter = () => {
           {/* path 如果为/，访问/home 的时候也会访问到Root组件，所以需要进行设置，exact ，只有/的时候才会访问Root */}
           <Route path="/" exact component={Root} />
           <Route path="/home" component={Home} />
-          <ReduxIntlProvider lang="EN">
+          <ReduxIntlProvider lang="ZH">
             {/* <ReduxIntlProvider lang={navigator.language}> */}
             <Route path="/user" component={User} />
           </ReduxIntlProvider>
